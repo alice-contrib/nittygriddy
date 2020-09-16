@@ -316,7 +316,7 @@ def check_aliphysics_version(version):
     if the version is not deployed
     """
     html = urlopen('http://alimonitor.cern.ch/packages/').read()
-    if html.find(version) < 0:
+    if html.find(bytes(version, encoding="utf-8")) < 0:
         raise ValueError("AliPhysics version {} is not deployed!".format(version))
     return version
 
